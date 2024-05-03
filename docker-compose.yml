@@ -14,31 +14,42 @@ services:
     volumes:
       - db:/data/db
 
-  master-data:
-    container_name: master-data
-    depends_on:
-      - mongodb
-    build: ./master-data
-    restart: unless-stopped
-    ports:
-      - 9000:9000
-    env_file: ./master-data/.env
-    stdin_open: true
-    tty: true
-    volumes:
-      - ./master-data:/usr/app/master-data
+  # master-data:
+  #   container_name: master-data
+  #   depends_on:
+  #     - mongodb
+  #   build: ./master-data
+  #   restart: unless-stopped
+  #   ports:
+  #     - 9000:9000
+  #   env_file: ./master-data/.env
+  #   stdin_open: true
+  #   tty: true
+  #   volumes:
+  #     - ./master-data:/usr/app/master-data
 
-  brand-management:
-    container_name: brand-management
+  # brand-management:
+  #   container_name: brand-management
+  #   depends_on:
+  #     - mongodb
+  #   build: ./brand-management
+  #   restart: always
+  #   ports:
+  #     - 9001:9001
+  #   env_file: ./brand-management/.env
+  #   volumes:
+  #     - ./brand-management:/usr/app/brand-management
+
+  campaign-management:
+    container_name: campaign-management
     depends_on:
       - mongodb
-    build: ./brand-management
+    build: ./campaign-management
     restart: always
     ports:
-      - 9001:9001
-    env_file: ./brand-management/.env
+      - 9002:9002
     volumes:
-      - ./brand-management:/usr/app/brand-management
+      - ./campaign-management:/usr/app/campaign-management
 
 volumes:
   db:
