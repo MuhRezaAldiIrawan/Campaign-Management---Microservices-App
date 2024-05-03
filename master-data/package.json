@@ -1,0 +1,34 @@
+{
+  "name": "lovvir-redem-logs",
+  "version": "1.0.0",
+  "description": "lovvit histori redem logs kuponku",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch . --legacy-watch main"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongodb",
+    "restapi",
+    "api"
+  ],
+  "author": "Muh Reza Aldi Irawan",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "basic-auth": "^2.0.1",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "buffer": "^6.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.2",
+    "multer": "^1.4.5-lts.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

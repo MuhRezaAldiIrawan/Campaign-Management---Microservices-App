@@ -1,0 +1,10 @@
+node_modules/
+
+upload/
+
+ignore-test/
+
+.env
+
+.dockerignore
+
