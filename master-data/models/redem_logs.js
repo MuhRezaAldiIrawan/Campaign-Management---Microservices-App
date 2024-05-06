@@ -4,11 +4,10 @@ const redemSchema = mongoose.Schema({
     campaign_id: String,
     ads_id: String,
     outlet_code: String,
-    status: {
+    status:{
         type: String,
         enum: ['success', 'failed']
-    },
-
+    }
 }, 
 {
     timestamps: true
@@ -20,5 +19,5 @@ redemSchema.method("toJSON", function() {
     return object;
 });
 
-module.exports = mongoose.model('RedemLogs', redemSchema);
+module.exports = mongoose.model('City', redemSchema);
 
