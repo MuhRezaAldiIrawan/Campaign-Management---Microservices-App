@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to master data Lovvit App");
 });
 
-// Integrate CRUD routes
+
 
 app.use('/api', cityRoutes);
 app.use('/api/auth', authRoutes);
