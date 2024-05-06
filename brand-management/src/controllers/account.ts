@@ -1,7 +1,7 @@
-import express from 'express';
+import { Request, Response } from 'express';
 import axios from 'axios';
 
-export const getBrand = async (req: express.Request, res: express.Response) => {
+export const getBrand = async (req: Request, res: Response) => {
     try {
 
         const response = await axios.get('https://portal.aptana.co.id/api/v1/Account', {

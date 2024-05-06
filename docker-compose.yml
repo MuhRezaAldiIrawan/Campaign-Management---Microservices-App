@@ -40,16 +40,33 @@ services:
   #   volumes:
   #     - ./brand-management:/usr/app/brand-management
 
-  campaign-management:
+  campaign-managemet:
     container_name: campaign-management
     depends_on:
       - mongodb
     build: ./campaign-management
-    restart: always
+    restart: unless-stopped
     ports:
       - 9002:9002
     volumes:
       - ./campaign-management:/usr/app/campaign-management
+      - ./campaign-management/deploy-ext/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+
+  webserver-nginx:
+    image: nginx:alpine
+    container_name: webserver-nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+        - "80:80"
+        - "443:443"
+    volumes:
+        - ./:/var/www
+        - ./deploy-ext/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+        - app-network
+    depends_on:
+        - app
 
 volumes:
   db:
