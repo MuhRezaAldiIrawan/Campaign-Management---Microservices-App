@@ -13,20 +13,22 @@ services:
       - 37017:27017
     volumes:
       - db:/data/db
+    # networks:
+    #   - app-networks
 
-  # master-data:
-  #   container_name: master-data
-  #   depends_on:
-  #     - mongodb
-  #   build: ./master-data
-  #   restart: unless-stopped
-  #   ports:
-  #     - 9000:9000
-  #   env_file: ./master-data/.env
-  #   stdin_open: true
-  #   tty: true
-  #   volumes:
-  #     - ./master-data:/usr/app/master-data
+  master-data:
+    container_name: master-data
+    depends_on:
+      - mongodb
+    build: ./master-data
+    restart: unless-stopped
+    ports:
+      - 9000:9000
+    env_file: ./master-data/.env
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./master-data:/usr/app/master-data
 
   # brand-management:
   #   container_name: brand-management
@@ -40,33 +42,39 @@ services:
   #   volumes:
   #     - ./brand-management:/usr/app/brand-management
 
-  campaign-managemet:
-    container_name: campaign-management
-    depends_on:
-      - mongodb
-    build: ./campaign-management
-    restart: unless-stopped
-    ports:
-      - 9002:9002
-    volumes:
-      - ./campaign-management:/usr/app/campaign-management
-      - ./campaign-management/deploy-ext/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+  # campaign-managemet:
+  #   container_name: campaign-management
+  #   depends_on:
+  #     - mongodb
+  #   build: ./campaign-management
+  #   tty: true
+  #   restart: unless-stopped
+  #   working_dir: /var/www/campaign-management
+  #   volumes:
+  #     - ./campaign-management:/var/www/campaign-management
+  #     - ./campaign-management/deploy-ext/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+  #   networks:
+  #     - app-networks
 
-  webserver-nginx:
-    image: nginx:alpine
-    container_name: webserver-nginx
-    restart: unless-stopped
-    tty: true
-    ports:
-        - "80:80"
-        - "443:443"
-    volumes:
-        - ./:/var/www
-        - ./deploy-ext/nginx/conf.d/:/etc/nginx/conf.d/
-    networks:
-        - app-network
-    depends_on:
-        - app
+  # webserver-nginx:
+  #   image: nginx:1.24.0-alpine
+  #   container_name: webserver-nginx
+  #   restart: unless-stopped
+  #   tty: true
+  #   ports:
+  #       - "80:80"
+  #       - "443:443"
+  #   networks:
+  #     - app-networks
+    # volumes:
+    #     - ./campaign-management:/var/www
+    #     - ./campaign-management/deploy-ext/nginx/conf.d:/etc/nginx/conf.d
+    # depends_on:
+    #     - campaign-managemet
 
 volumes:
   db:
+
+# networks:
+#   app-networks:
+#     driver: bridge

@@ -5,6 +5,7 @@ const db = require("./config/database.config");
 const cityRoutes = require('./routes/cityRoutes');
 const authRoutes = require('./routes/authRoutes');
 const portalAccountRoutes = require('./routes/portalaccountRoutes');
+const redemLogsRoutes = require('./routes/redemlogsRoutes');
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.get("/", (req, res) => {
 app.use('/api', cityRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/portalaccount', portalAccountRoutes);
+app.use('/api', redemLogsRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 9000;
