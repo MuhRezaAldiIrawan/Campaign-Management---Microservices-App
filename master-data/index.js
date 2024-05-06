@@ -24,7 +24,7 @@ mongoose.connect(db.url)
     process.exit();
 });
 
-// Define routeslo  
+ 
 app.get("/", (req, res) => {
   res.send("Welcome to master data Lovvit App");
 });
