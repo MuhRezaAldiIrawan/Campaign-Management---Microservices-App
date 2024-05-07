@@ -24,7 +24,7 @@ exports.getCityById = async (req, res) => {
     }
 };
 
-//  menambah
+//  menambah kota baru
 exports.addCity = async (req, res) => {
     try {
         // Cek apakah kode kota sudah ada
