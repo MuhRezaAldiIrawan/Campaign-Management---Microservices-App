@@ -11,7 +11,7 @@ exports.getAllCities = async (req, res) => {
 };
 
 
-// Mendapatkan kota berdasarkan ID Kota sana 
+// Mendapatkan kota berdasarkan ID 
 exports.getCityById = async (req, res) => {
     try {
         const city = await City.findById(req.params.id);
